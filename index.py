@@ -13,8 +13,12 @@ TEXT_COLOR = "white"
 
 
 def load_font(size):
-    """Try common macOS fonts, then fall back to default."""
     possible_fonts = [
+        # Raspberry Pi / Linux
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+
+        # macOS
         "/System/Library/Fonts/Helvetica.ttc",
         "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/Library/Fonts/Arial.ttf",
@@ -22,11 +26,10 @@ def load_font(size):
 
     for font_path in possible_fonts:
         if os.path.exists(font_path):
+            print("Using font:", font_path)
             return ImageFont.truetype(font_path, size)
 
-    print("Warning: could not find Helvetica/Arial, using default font.")
-    return ImageFont.load_default()
-
+    raise FileNotFoundError("Could not find a usable font.")
 
 def draw_centered(draw, canvas_size, text, font, y, fill=TEXT_COLOR):
     bbox = draw.textbbox((0, 0), text, font=font)
