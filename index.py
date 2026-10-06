@@ -122,7 +122,6 @@ def upload_profile_picture(file_path):
 def main():
     # If user gives a file path, upload that.
     # Otherwise, generate time.png and upload it.
-    while True:
 
         if len(sys.argv) >= 2:
             file_path = sys.argv[1]
