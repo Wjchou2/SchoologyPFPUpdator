@@ -15,7 +15,7 @@ TEXT_COLOR = "white"
 def load_font(size):
     possible_fonts = [
         # Raspberry Pi / Linux
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
 
         # macOS
